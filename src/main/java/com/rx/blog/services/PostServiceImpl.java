@@ -1,5 +1,6 @@
 package com.rx.blog.services;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> getAllPosts() {
+	public List<Post> getAllPosts(int pageSize,int pageNo, Pageable page) {
 		List<Post> allPosts=new ArrayList<>();
 		
 		allPosts.addAll(pRepo.findAll());

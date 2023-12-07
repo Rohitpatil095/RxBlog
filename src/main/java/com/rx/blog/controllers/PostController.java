@@ -1,5 +1,6 @@
 package com.rx.blog.controllers;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rx.blog.dto.PostDto;
@@ -32,8 +34,9 @@ public class PostController {
 	}
 	
 	@GetMapping
-	public List<Post> getAllUserPosts(){
-		return postService.getAllPosts();
+	public List<Post> getAllUserPosts(@RequestParam(defaultValue = "10",name="pageSize", required = false) int pageSize,
+			@RequestParam(defaultValue = "0", name = "pageNo", required = false) int pageNo, Pageable page){
+		return postService.getAllPosts(pageSize,pageNo,page);
 	}
 	
 	
