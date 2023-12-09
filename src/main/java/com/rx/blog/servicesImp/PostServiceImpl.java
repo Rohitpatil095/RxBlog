@@ -1,4 +1,4 @@
-package com.rx.blog.services;
+package com.rx.blog.servicesImp;
 
 import java.awt.print.Pageable;
 import java.util.ArrayList;
@@ -12,8 +12,7 @@ import org.springframework.stereotype.Service;
 import com.rx.blog.dto.PostDto;
 import com.rx.blog.entity.Post;
 import com.rx.blog.repository.PostRepository;
-
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
+import com.rx.blog.services.PostService;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -30,7 +29,6 @@ public class PostServiceImpl implements PostService {
 		
 		postDto.setId(savedPost.getId());
 		return postDto;
-		
 	}
 
 	@Override
