@@ -13,4 +13,5 @@ public interface CommentService {
 	public CommentDto getCommentByCommentIdAndPostId(Long postId, Long commentId);
 	public Comment getCommentByCommentId(Long commentId);
 	public CommentDto updateComment(Long postId, Long commentId, CommentDto commentdto);
+	public void deleteComment(Long postId, Long commentId);
 }
