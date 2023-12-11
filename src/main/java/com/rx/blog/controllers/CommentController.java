@@ -3,6 +3,9 @@ package com.rx.blog.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,8 +51,9 @@ public class CommentController {
 	}
 	
 	@DeleteMapping("/{postId}/comment/{commentId}")
-	public void deleteComment(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId)
+	public ResponseEntity<String> deleteComment(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId)
 	{
 		commentServiceImpl.deleteComment(postId, commentId);
+		return new ResponseEntity<>("Commnet had been deleted",HttpStatus.OK);
 	}
 }
