@@ -1,4 +1,4 @@
-package com.rx.blog.dto;
+package com.rx.blog.payload;
 
 import lombok.Data;
 

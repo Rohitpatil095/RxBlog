@@ -18,4 +18,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 	@Query(value="select * from comments where post_id= :postId and id= :commentId" ,nativeQuery = true)
 	public Comment getCommentByCommentIdAndPostId(@Param("postId") Long postId, @Param("commentId") Long commentId);
 
+	
 }

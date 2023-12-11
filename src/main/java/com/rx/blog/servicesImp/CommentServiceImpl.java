@@ -9,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.rx.blog.dto.PostDto;
 import com.rx.blog.entity.Comment;
 import com.rx.blog.entity.Post;
 import com.rx.blog.exception.BlogApiException;
 import com.rx.blog.exception.ResourceNotdFoundException;
 import com.rx.blog.payload.CommentDto;
+import com.rx.blog.payload.PostDto;
 import com.rx.blog.repository.CommentRepository;
 import com.rx.blog.repository.PostRepository;
 import com.rx.blog.services.CommentService;

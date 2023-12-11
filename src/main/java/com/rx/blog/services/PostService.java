@@ -3,8 +3,8 @@ package com.rx.blog.services;
 import java.awt.print.Pageable;
 import java.util.List;
 
-import com.rx.blog.dto.PostDto;
 import com.rx.blog.entity.Post;
+import com.rx.blog.payload.PostDto;
 
 public interface PostService {
 

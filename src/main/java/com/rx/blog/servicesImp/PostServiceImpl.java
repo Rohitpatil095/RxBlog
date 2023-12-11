@@ -9,8 +9,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rx.blog.dto.PostDto;
 import com.rx.blog.entity.Post;
+import com.rx.blog.payload.PostDto;
 import com.rx.blog.repository.PostRepository;
 import com.rx.blog.services.PostService;
 
