@@ -9,7 +9,8 @@ import com.rx.blog.entity.Post;
 public interface PostService {
 
 	public PostDto savePost(PostDto postDto);
-	public List<Post> getAllPosts(int pageSize,int pageNo,Pageable page);
+//	public List<Post> getAllPosts(int pageSize,int pageNo,Pageable page);
+	public List<Post> getAllPosts();
 	public PostDto getPostById(Long id);
 	public PostDto updateUserPost(Long id, PostDto postDto);
 	public PostDto deletePostById(Long id);

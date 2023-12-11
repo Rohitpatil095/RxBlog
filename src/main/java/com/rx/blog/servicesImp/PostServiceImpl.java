@@ -31,8 +31,21 @@ public class PostServiceImpl implements PostService {
 		return postDto;
 	}
 
+//	@Override
+//	public List<Post> getAllPosts(int pageSize,int pageNo, Pageable page) {
+//		List<Post> allPosts=new ArrayList<>();
+//		
+//		allPosts.addAll(pRepo.findAll());
+//		if(allPosts.size()<1)
+//		{
+//			return null;
+//		}
+//		return allPosts;
+//		
+//	}
+
 	@Override
-	public List<Post> getAllPosts(int pageSize,int pageNo, Pageable page) {
+	public List<Post> getAllPosts() {
 		List<Post> allPosts=new ArrayList<>();
 		
 		allPosts.addAll(pRepo.findAll());
@@ -43,7 +56,7 @@ public class PostServiceImpl implements PostService {
 		return allPosts;
 		
 	}
-
+	
 	@Override
 	public PostDto getPostById(Long id) {
 		Post post=new Post();

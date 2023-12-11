@@ -33,12 +33,16 @@ public class PostController {
 		return new ResponseEntity<PostDto>(postService.savePost(postDto),HttpStatus.CREATED);
 	}
 	
-	@GetMapping
-	public List<Post> getAllUserPosts(@RequestParam(defaultValue = "10",name="pageSize", required = false) int pageSize,
-			@RequestParam(defaultValue = "0", name = "pageNo", required = false) int pageNo, Pageable page){
-		return postService.getAllPosts(pageSize,pageNo,page);
-	}
+//	@GetMapping
+//	public List<Post> getAllUserPostsPageable(@RequestParam(defaultValue = "10",name="pageSize", required = false) int pageSize,
+//			@RequestParam(defaultValue = "0", name = "pageNo", required = false) int pageNo, Pageable page){
+//		return postService.getAllPosts(pageSize,pageNo,page);
+//	}
 	
+	@GetMapping
+	public List<Post> getAllUserPosts(){
+		return postService.getAllPosts();
+	}
 	
 	@GetMapping("{id}")
 	public PostDto getUserPostById(@PathVariable("id") Long id)
