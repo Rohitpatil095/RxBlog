@@ -20,6 +20,8 @@ import com.rx.blog.entity.Post;
 import com.rx.blog.payload.PostDto;
 import com.rx.blog.services.PostService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/posts")
 public class PostController {
@@ -28,7 +30,7 @@ public class PostController {
 	PostService postService;
 
 	@PostMapping
-	public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto)
+	public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto postDto)
 	{
 		return new ResponseEntity<PostDto>(postService.savePost(postDto),HttpStatus.CREATED);
 	}
@@ -51,7 +53,7 @@ public class PostController {
 	}
 	
 	@PutMapping("{id}")
-	public PostDto updateExistingPost(@PathVariable("id") Long id, @RequestBody PostDto postDto) {
+	public PostDto updateExistingPost(@PathVariable("id") Long id, @Valid @RequestBody PostDto postDto) {
 		
 		return postService.updateUserPost(id, postDto);
 		

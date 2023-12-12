@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rx.blog.payload.CommentDto;
 import com.rx.blog.servicesImp.CommentServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/posts")
 public class CommentController {
@@ -26,7 +28,7 @@ public class CommentController {
 	private CommentServiceImpl commentServiceImpl;
 	
 	@PostMapping("/{postId}/comment")
-	public CommentDto createComment(@PathVariable("postId") Long postId, @RequestBody CommentDto commentDto)
+	public CommentDto createComment(@PathVariable("postId") Long postId,@Valid @RequestBody CommentDto commentDto)
 	{
 		return commentServiceImpl.createComment(postId, commentDto);
 	}
@@ -45,7 +47,7 @@ public class CommentController {
 	}
 	
 	@PutMapping("/{postId}/comment/{commentId}")
-	public CommentDto updateComment(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId, @RequestBody CommentDto commentDto)
+	public CommentDto updateComment(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId, @Valid @RequestBody CommentDto commentDto)
 	{
 		return commentServiceImpl.updateComment(postId, commentId, commentDto);
 	}
