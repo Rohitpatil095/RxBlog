@@ -1,5 +1,6 @@
 package com.rx.blog.exception;
 
+import java.nio.file.AccessDeniedException;
 import java.util.Date;
 
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,12 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(errorDetail,HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(AccessDeniedException.class)
+	public ResponseEntity<ErrorDetails> handleAccessDeniedException(AccessDeniedException exception, WebRequest request)
+	{
+		ErrorDetails details= new ErrorDetails(new Date(), exception.getMessage(),request.getDescription(false));
+		return new ResponseEntity<ErrorDetails>(details,HttpStatus.UNAUTHORIZED);
+	}
 	
 	// handling global exceptions
 	@ExceptionHandler(Exception.class)
@@ -37,4 +44,5 @@ public class GlobalExceptionHandler {
 		ErrorDetails errorDetails= new ErrorDetails(new Date(),exception.getMessage(),request.getDescription(false));
 		return new ResponseEntity<ErrorDetails>(errorDetails,HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 }

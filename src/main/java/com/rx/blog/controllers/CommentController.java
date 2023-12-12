@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class CommentController {
 	@Autowired
 	private CommentServiceImpl commentServiceImpl;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/{postId}/comment")
 	public CommentDto createComment(@PathVariable("postId") Long postId,@Valid @RequestBody CommentDto commentDto)
 	{
@@ -52,6 +54,7 @@ public class CommentController {
 		return commentServiceImpl.updateComment(postId, commentId, commentDto);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{postId}/comment/{commentId}")
 	public ResponseEntity<String> deleteComment(@PathVariable("postId") Long postId, @PathVariable("commentId") Long commentId)
 	{

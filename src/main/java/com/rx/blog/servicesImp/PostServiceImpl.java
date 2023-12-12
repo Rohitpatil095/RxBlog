@@ -7,9 +7,12 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.rx.blog.entity.Post;
+import com.rx.blog.exception.ResourceNotdFoundException;
 import com.rx.blog.payload.PostDto;
 import com.rx.blog.repository.PostRepository;
 import com.rx.blog.services.PostService;
@@ -60,15 +63,15 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public PostDto getPostById(Long id) {
 		Post post=new Post();
-		Optional<Post> retrivedPost=pRepo.findById(id);
-		if(retrivedPost.isPresent())
-		{
-			post=retrivedPost.get();
-		}
-		else
-		{
-			return null;
-		}
+		Post retrivedPost=pRepo.findById(id).orElseThrow(()-> new ResourceNotdFoundException("Post","Id",""+id));
+//		if(retrivedPost.isPresent())
+//		{
+//			post=retrivedPost.get();
+//		}
+//		else
+//		{
+//			return null;
+//		}
 		PostDto myRetrivedPost= new PostDto();
 		BeanUtils.copyProperties(post, myRetrivedPost);
 		return myRetrivedPost;
