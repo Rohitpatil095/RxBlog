@@ -38,21 +38,21 @@ public class SecurityConfig {
 				.build();
 	}
 	
-	@Bean
-	public UserDetailsService users()
-	{
-		UserDetails nonAdmin= User.builder()
-				.username("ramesh")
-				.password(passEncoder().encode("rama"))
-				.roles("USER")
-				.build();
-		UserDetails admin= User.builder()
-				.username("rot")
-				.password(passEncoder().encode("rotten"))
-				.roles("ADMIN")
-				.build();
-		return new InMemoryUserDetailsManager(nonAdmin, admin);
-	}
+//	@Bean
+//	public UserDetailsService users()
+//	{
+//		UserDetails nonAdmin= User.builder()
+//				.username("ramesh")
+//				.password(passEncoder().encode("rama"))
+//				.roles("USER")
+//				.build();
+//		UserDetails admin= User.builder()
+//				.username("rot")
+//				.password(passEncoder().encode("rotten"))
+//				.roles("ADMIN")
+//				.build();
+//		return new InMemoryUserDetailsManager(nonAdmin, admin);
+//	}
 	
 	
 	
