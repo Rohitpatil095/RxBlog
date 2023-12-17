@@ -1,1 +1,1 @@
-everything cant fit here. Refer reamde.docx file for more project details and insights
+everything cant fit here. Refer readme.docx file for more project details and insights
